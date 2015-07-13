@@ -9,7 +9,9 @@ module Rsync
     # @param args {Array}
     # @return {Result}
     def self.run(*args)
-      output = run_command([command, "--itemize-changes", args].flatten.shelljoin)
+      output = run_command([command, "--itemize-changes", args].flatten.join(' '))
+      puts "Rsync::Command - output: #{output}"
+
       Result.new(output, $?.exitstatus)
     end
 
@@ -24,6 +26,7 @@ module Rsync
 private
 
     def self.run_command(cmd, &block)
+      puts "Rsync::Command - cmd: #{cmd}"
       if block_given?
         IO.popen("#{cmd} 2>&1", &block)
       else
