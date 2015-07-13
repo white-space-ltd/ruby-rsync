@@ -14,7 +14,8 @@ class TempDir
       `cd #{@path}; tree -pugAD`
     else
       #`cd #{@path}; find . -printf "%A@ %p\n"`
-      `cd #{@path}; find . -printf "%p\n"`
+      # `cd #{@path}; find . -printf "%p\n"`
+      `cd #{@path}; find . -print`
     end
   end
 

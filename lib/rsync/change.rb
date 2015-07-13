@@ -17,8 +17,7 @@ module Rsync
     # @return [String]
     def filename
       # @data[12..-1]
-      _, filename = @data.split(' ')
-      filename
+      @data.split(' ').last
     end
 
     # Whether the file was changed or not.
